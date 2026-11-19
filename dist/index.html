@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="fr" data-other="en/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ma mémorisation · Appli pour mémoriser et réviser le Coran</title>
+<meta name="description" content="Mémorise le Coran et révise chaque jour : ta révision prête chaque matin, une boucle à ton rythme, et un jardin où chaque sourate devient un arbre. Hafs, Warsh et Qalun. Noté 5,0 sur l’App Store.">
+<link rel="canonical" href="https://mamemorisation.com/">
+<link rel="alternate" hreflang="fr" href="https://mamemorisation.com/">
+<link rel="alternate" hreflang="en" href="https://mamemorisation.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://mamemorisation.com/">
+<meta name="apple-itunes-app" content="app-id=6828521150">
+<meta name="theme-color" content="#D0C9E4">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ma mémorisation">
+<meta property="og:title" content="Ma mémorisation · Appli pour mémoriser et réviser le Coran">
+<meta property="og:description" content="Mémorise le Coran et révise chaque jour : ta révision prête chaque matin, une boucle à ton rythme, et un jardin où chaque sourate devient un arbre. Hafs, Warsh et Qalun. Noté 5,0 sur l’App Store.">
+<meta property="og:url" content="https://mamemorisation.com/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://mamemorisation.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le jardin de l’appli Ma mémorisation">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/icon.png">
+<link rel="apple-touch-icon" href="images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Amiri:wght@400;700&display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Ma mémorisation","operatingSystem":"iOS","applicationCategory":"EducationalApplication","inLanguage":["fr","en","ar"],"description":"Mémorise le Coran et révise chaque jour : ta révision prête chaque matin, une boucle à ton rythme, et un jardin où chaque sourate devient un arbre. Hafs, Warsh et Qalun. Noté 5,0 sur l’App Store.","url":"https://mamemorisation.com/","image":"https://mamemorisation.com/images/icon.png","installUrl":"https://apps.apple.com/app/id6828521150","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","ratingCount":"60","bestRating":"5"}}</script>
+<style>
+/* Mise en page : chaque partie a sa propre forme (en-tête avec les montagnes dessinées, zoom sur l'écran du jour,
+   comparaison du jardin, grille de cases, mur d'avis). Aucune partie ne dépasse la hauteur d'un écran d'ordinateur. */
+:root {
+  --bg: #F6F6F9;
+  --card: #FFFFFF;
+  --ink: #23264A;
+  --muted: #5E6180;
+  --line: #E8E8EF;
+  --coral: #FF8F70;
+  --coral-deep: #D9573A;
+  --on-coral: #23264A;
+  --sky: #D0C9E4;
+  --sun: #FAE28E;
+  --lavender: #DCD8F7;
+  --lavender-ink: #5A52B8;
+  --sage: #D4ECDD;
+  --sage-ink: #33694B;
+  --butter: #FBEBB5;
+  --butter-ink: #765510;
+  --blush: #FFE4DA;
+  --blush-ink: #B8432A;
+  --night: #23264A;
+  --on-night: #F4F1EA;
+  --star: #E8A93A;
+  --shadow: 0 18px 40px rgba(35, 38, 74, 0.12);
+  --font-display: "Bricolage Grotesque", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arabic: "Amiri", "Geeza Pro", "Traditional Arabic", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15172B; --card: #20233D; --ink: #F4F1EA; --muted: #B3B5CF; --line: #3A3D5E;
+    --coral: #FF8F70; --coral-deep: #FFA58C; --on-coral: #23264A; --sky: #2A2C52; --sun: #F6EAB8;
+    --lavender: #2C2A57; --lavender-ink: #CFCBFA; --sage: #22403A; --sage-ink: #A9DDBF;
+    --butter: #3E3519; --butter-ink: #F5DC8A; --blush: #44271F; --blush-ink: #FFB4A0;
+    --night: #0E1022; --on-night: #F4F1EA; --star: #F5C566; --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15172B; --card: #20233D; --ink: #F4F1EA; --muted: #B3B5CF; --line: #3A3D5E;
+  --coral: #FF8F70; --coral-deep: #FFA58C; --on-coral: #23264A; --sky: #2A2C52; --sun: #F6EAB8;
+  --lavender: #2C2A57; --lavender-ink: #CFCBFA; --sage: #22403A; --sage-ink: #A9DDBF;
+  --butter: #3E3519; --butter-ink: #F5DC8A; --blush: #44271F; --blush-ink: #FFB4A0;
+  --night: #0E1022; --on-night: #F4F1EA; --star: #F5C566; --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--font-body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--coral-deep); outline-offset: 3px; border-radius: 8px; }
+
+/* Langue : seuls les textes de la langue choisie sont affichés */
+html[lang="fr"] [lang="en"]:not(html), html[lang="en"] [lang="fr"]:not(html) { display: none !important; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(32px, 3.6vw, 48px); line-height: 1.08; font-weight: 800; }
+h2 { font-size: clamp(26px, 2.6vw, 34px); line-height: 1.15; font-weight: 800; }
+h3 { font-size: 19px; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; }
+p { margin: 0; }
+.lead { font-size: 17px; color: var(--muted); max-width: 32em; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--coral-deep); }
+section { scroll-margin-top: 70px; }
+
+/* Barre du haut */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.top .wrap { display: flex; align-items: center; gap: 12px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 800; font-size: 18px; margin-right: auto; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+.links { display: flex; gap: 22px; font-size: 15px; font-weight: 500; color: var(--muted); }
+.links a { text-decoration: none; } .links a:hover { color: var(--ink); }
+.lang { display: flex; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+.lang button { font: 700 12px var(--font-body); color: var(--muted); background: none; border: 0; border-radius: 999px; padding: 5px 10px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+@media (max-width: 760px) { .links { display: none; } }
+
+/* Boutons */
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 16px var(--font-body); border-radius: 14px; padding: 11px 18px; border: 0; cursor: pointer; transition: transform .15s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+.btn .two { display: flex; flex-direction: column; text-align: left; line-height: 1.15; }
+.btn small { font-size: 11px; font-weight: 500; opacity: .8; }
+.btn svg { width: 22px; height: 22px; flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn-coral { background: var(--coral); color: var(--on-coral); }
+.btn-nav { padding: 8px 14px; font-size: 14px; border-radius: 999px; }
+.brand { white-space: nowrap; }
+/* Petit écran : la bannière App Store de Safari et le bouton du haut de page suffisent */
+@media (max-width: 460px) { .btn-nav { display: none; } }
+.qr { display: flex; align-items: center; gap: 14px; background: var(--card); border-radius: 18px; padding: 10px 16px 10px 10px; align-self: flex-start; max-width: 360px; }
+.qr img { width: 84px; height: 84px; border-radius: 10px; flex: none; }
+.qr p { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.qr strong { color: var(--ink); }
+/* Le code QR ne sert que sur ordinateur */
+@media (max-width: 820px), (pointer: coarse) { .qr { display: none; } }
+
+/* 1. En-tête : ciel, soleil et montagnes de l'appli */
+.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--sky) 0%, var(--bg) 92%); }
+.hero .mountains { position: absolute; left: 50%; bottom: 0; width: max(1100px, 100%); max-width: none; transform: translateX(-50%); opacity: .45; pointer-events: none; -webkit-mask-image: linear-gradient(transparent 25%, #000 70%); mask-image: linear-gradient(transparent 25%, #000 70%); }
+/* Les barrières gardent leur vraie couleur, par-dessus les montagnes pâlies */
+.hero .mountains.fences { opacity: 1; -webkit-mask-image: none; mask-image: none; }
+.hero .lead { color: var(--ink); font-weight: 500; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; padding-block: 48px 0; }
+.hero-text { display: flex; flex-direction: column; gap: 20px; padding-bottom: 72px; min-width: 0; }
+.hero h1 em { font-style: normal; color: var(--sage-ink); }
+.rating { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; background: var(--card); border-radius: 999px; padding: 6px 14px 6px 10px; font-size: 14px; text-decoration: none; box-shadow: 0 2px 10px rgba(35,38,74,.06); }
+.stars { color: var(--star); letter-spacing: 1px; }
+.hero-phone { position: relative; align-self: end; }
+.hero-phone::before { content: ""; position: absolute; width: 190px; height: 190px; border-radius: 50%; background: var(--sun); top: 40px; right: -70px; box-shadow: 0 0 0 26px color-mix(in srgb, var(--sun) 35%, transparent); }
+.hero-phone img { position: relative; height: min(560px, 66vh); width: auto; filter: drop-shadow(0 26px 30px rgba(35,38,74,.22)); margin-bottom: -90px; }
+@media (max-width: 820px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 8px; padding-block: 32px 0; }
+  .hero-text { padding-bottom: 16px; }
+  .hero-phone { justify-self: center; }
+  .hero-phone img { height: 440px; margin-bottom: -70px; }
+  .hero-phone::before { width: 130px; height: 130px; right: -40px; }
+}
+
+/* 2. Citations courtes */
+.quotes { position: relative; z-index: 1; background: var(--bg); padding-block: 40px 8px; }
+.quotes .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.quote { margin: 0; display: flex; flex-direction: column; gap: 6px; border-top: 2px solid var(--ink); padding-top: 14px; }
+.quote p { font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.3; }
+.quote span { font-size: 13px; color: var(--muted); }
+@media (max-width: 760px) { .quotes .wrap { grid-template-columns: 1fr; gap: 20px; } }
+
+/* 3. Ta journée : zoom sur l'écran du jour */
+.today { padding-block: 72px; }
+.today .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.today .copy { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.steps { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.steps li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: start; }
+.steps b { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--butter); color: var(--butter-ink); font-size: 14px; }
+.steps strong { display: block; font-weight: 700; }
+.steps span { color: var(--muted); font-size: 15px; }
+.shot { position: relative; justify-self: center; width: min(100%, 380px); }
+.shot img { border-radius: 28px; box-shadow: var(--shadow); transform: rotate(-2deg); }
+.shot .tag { position: absolute; font-weight: 700; font-size: 14px; border-radius: 999px; padding: 7px 14px; box-shadow: var(--shadow); white-space: nowrap; }
+.shot .t1 { top: -14px; right: -18px; background: var(--butter); color: var(--butter-ink); transform: rotate(4deg); }
+.shot .t2 { bottom: 40px; left: -34px; background: var(--sage); color: var(--sage-ink); transform: rotate(-4deg); }
+@media (max-width: 820px) {
+  .today { padding-block: 48px; }
+  .today .wrap { grid-template-columns: 1fr; gap: 40px; }
+  .shot .t2 { left: -8px; } .shot .t1 { right: -4px; }
+}
+
+/* 4. Le jardin : comparaison révisé / oublié */
+.garden { background: var(--sage); padding-block: 48px; }
+.garden .wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.garden .compare { margin-top: 12px; }
+.garden .lead { color: var(--sage-ink); }
+.compare { position: relative; width: min(100%, 540px); aspect-ratio: 814 / 628; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); --pos: 50%; user-select: none; }
+.compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; max-width: none; }
+.compare .dry { clip-path: inset(0 0 0 var(--pos)); }
+.compare .bar { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; background: #fff; transform: translateX(-50%); pointer-events: none; }
+.compare .knob { position: absolute; top: 50%; left: var(--pos); width: 44px; height: 44px; border-radius: 50%; background: #fff; transform: translate(-50%, -50%); display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.2); pointer-events: none; color: #23264A; font-weight: 800; font-size: 15px; }
+.compare input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+.compare .lbl { position: absolute; bottom: 14px; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; pointer-events: none; }
+.compare .l1 { left: 14px; background: #D4ECDD; color: #33694B; }
+.compare .l2 { right: 14px; background: #FFE4DA; color: #B8432A; }
+.compare:has(input:focus-visible) { outline: 3px solid var(--coral-deep); outline-offset: 4px; }
+
+/* 5. Grille de cases */
+.bento { padding-block: 56px 16px; }
+.bento .wrap > header { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.cells { display: grid; grid-template-columns: 1.05fr 1fr 1fr; grid-template-rows: auto auto; gap: 16px; }
+.cell { border-radius: 26px; padding: 22px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; min-width: 0; }
+.cell p { font-size: 15px; color: var(--muted); }
+.cell .pic { margin-top: auto; padding-top: 12px; }
+.cell .pic img { border-radius: 16px; width: 100%; }
+.c-list { grid-row: span 2; background: var(--lavender); }
+.c-list p { color: var(--lavender-ink); }
+.c-list .pic { position: relative; margin-top: 8px; flex: 1 1 0; min-height: 300px; overflow: hidden; border-radius: 16px; -webkit-mask-image: linear-gradient(#000 72%, transparent); mask-image: linear-gradient(#000 72%, transparent); }
+.c-list .pic img { position: absolute; inset: 0 0 auto; }
+.c-list .pic img { border-radius: 16px 16px 0 0; }
+.c-stats { background: var(--blush); } .c-stats p { color: var(--blush-ink); }
+.c-end { background: var(--butter); } .c-end p { color: var(--butter-ink); }
+.c-mushaf { background: var(--card); border: 1px solid var(--line); justify-content: center; }
+.c-mushaf .ar { font-family: var(--font-arabic); font-size: clamp(26px, 2.5vw, 32px); line-height: 1.5; color: var(--ink); direction: rtl; white-space: nowrap; }
+.c-night { background: var(--night); color: var(--on-night); }
+.c-night .pic img { aspect-ratio: 16 / 9; object-fit: cover; object-position: center 35%; }
+.c-night p { color: #C9C8E0; }
+/* Un fondu en bas de chaque image des cases : rien ne touche le bord du cadre */
+.cell .pic { -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); }
+.cell.c-list .pic { -webkit-mask-image: linear-gradient(#000 65%, transparent); mask-image: linear-gradient(#000 65%, transparent); }
+@media (max-width: 900px) {
+  .cells { grid-template-columns: 1fr 1fr; }
+  .c-list { grid-row: span 1; grid-column: span 2; }
+  .c-list .pic { max-height: 340px; }
+}
+@media (max-width: 600px) {
+  .cells { grid-template-columns: 1fr; }
+  .c-list { grid-column: span 1; }
+}
+
+/* 6. Mur d'avis */
+.reviews { padding-block: 64px 24px; }
+.reviews header { display: flex; align-items: end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+.reviews header > div { display: flex; flex-direction: column; gap: 10px; }
+.score { display: flex; align-items: center; gap: 14px; }
+.score .big { font-family: var(--font-display); font-weight: 800; font-size: 48px; line-height: 1; font-variant-numeric: tabular-nums; }
+.score .stars { font-size: 20px; display: block; }
+.score .meta { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.wall-box { position: relative; max-height: 500px; overflow: hidden; }
+.wall-box.open { max-height: none; }
+.wall-box:not(.open)::after { content: ""; position: absolute; inset: auto 0 0; height: 160px; background: linear-gradient(transparent, var(--bg)); pointer-events: none; }
+.wall { columns: 3 280px; column-gap: 16px; }
+.review { break-inside: avoid; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px 20px; margin: 0 0 16px; display: flex; flex-direction: column; gap: 8px; }
+.review .head { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; }
+.review .where { color: var(--muted); }
+.review h3 { font-family: var(--font-body); font-size: 16px; font-weight: 700; letter-spacing: 0; }
+.review p { font-size: 15px; line-height: 1.55; }
+.review .who { font-size: 13px; color: var(--muted); }
+.review.hl { background: var(--lavender); border-color: transparent; }
+.more { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+.note-lang { font-size: 13px; color: var(--muted); }
+
+/* 7. Petits détails */
+.details { padding-block: 56px; }
+.details .wrap { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+.list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 32px; }
+.list div { display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--line); padding-top: 14px; min-width: 0; }
+.list h3 { font-size: 17px; }
+.list p { font-size: 15px; color: var(--muted); }
+@media (max-width: 820px) { .details .wrap { grid-template-columns: 1fr; gap: 24px; } }
+@media (max-width: 560px) { .list { grid-template-columns: 1fr; } }
+
+/* 8. Fin */
+.end { padding-block: 8px 64px; }
+.end .panel { background: var(--coral); color: var(--on-coral); border-radius: 32px; padding: 40px 48px 0; display: grid; grid-template-columns: 1fr 260px; gap: 32px; align-items: end; overflow: hidden; }
+.end .copy { display: flex; flex-direction: column; gap: 16px; padding-bottom: 40px; }
+.end .copy p { font-size: 17px; max-width: 30em; }
+.end .btn-ink { background: #23264A; color: #F6F6F9; }
+.end .btn-ghost { background: rgba(255,255,255,.6); color: #23264A; border-color: transparent; }
+.end .house { width: 100%; margin-bottom: -12px; }
+@media (max-width: 760px) {
+  .end .panel { grid-template-columns: 1fr; padding: 32px 24px 0; }
+  .end .copy { padding-bottom: 0; }
+  .end .house { width: 200px; justify-self: center; }
+}
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 44px; font-size: 14px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 32px; justify-content: space-between; }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+footer a { text-decoration: none; } footer a:hover { color: var(--ink); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="images/icon.png" alt="">Ma mémorisation</a>
+    <nav class="links">
+      <a href="#jardin"><span lang="fr">Le jardin</span><span lang="en">The garden</span></a>
+      <a href="#avis"><span lang="fr">Avis</span><span lang="en">Reviews</span></a>
+      <a href="assistance.html"><span lang="fr">Assistance</span><span lang="en">Support</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Langue / Language">
+      <button type="button" id="lang-fr" data-set="fr" aria-pressed="true">FR</button>
+      <button type="button" id="lang-en" data-set="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-coral btn-nav" href="https://apps.apple.com/app/id6828521150" target="_blank" rel="noopener"><span lang="fr">Télécharger</span><span lang="en">Download</span></a>
+  </div>
+</header>
+
+<main>
+  <!-- 1. En-tête -->
+  <section class="hero">
+    <img class="mountains" src="images/montagnes.png" alt="">
+    <img class="mountains fences" src="images/barrieres.png" alt="">
+    <div class="wrap">
+      <div class="hero-text">
+        <a class="rating" href="#avis">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span lang="fr"><b>5,0</b> · 60 notes sur l’App Store</span>
+          <span lang="en"><b>5.0</b> · 60 ratings on the App Store</span>
+        </a>
+        <h1 lang="fr">Mémorise le Coran, révise chaque jour, et regarde ton <em>jardin</em> grandir.</h1>
+        <h1 lang="en">Memorize the Quran, revise every day, and watch your <em>garden</em> grow.</h1>
+        <p class="lead" lang="fr">Ta révision est prête chaque matin, ta boucle suit ton rythme, et chaque sourate apprise devient un arbre. Sans publicité.</p>
+        <p class="lead" lang="en">Your revision is ready every morning, your loop follows your pace, and every surah you learn becomes a tree. No ads.</p>
+        <div class="ctas">
+          <a class="btn btn-ink" href="https://apps.apple.com/app/id6828521150" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm0 3v13h10V5H7Zm5 14.2a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>
+            <span class="two"><small lang="fr">Télécharger sur</small><small lang="en">Download on the</small>App Store</span>
+          </a>
+          <a class="btn btn-ghost" href="https://mamemorisation.beehiiv.com" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17a1 1 0 0 0 1.5.86l14.7-8.5a1 1 0 0 0 0-1.72L5.5 2.64A1 1 0 0 0 4 3.5Z"/></svg>
+            <span class="two"><small lang="fr">Android, bientôt :</small><small lang="en">Android, coming soon:</small><span lang="fr">Préviens-moi</span><span lang="en">Let me know</span></span>
+          </a>
+        </div>
+        <div class="qr">
+          <img src="images/qr-app-store.svg" alt="Code QR vers l’App Store" width="96" height="96">
+          <p lang="fr"><strong>Sur ordinateur ?</strong><br>Scanne ce code avec l’appareil photo de ton iPhone pour ouvrir l’App Store.</p>
+          <p lang="en"><strong>On a computer?</strong><br>Scan this code with your iPhone camera to open the App Store.</p>
+        </div>
+      </div>
+      <div class="hero-phone">
+        <img class="i18n" src="images/telephone-jardin-fr.png" data-en="images/telephone-jardin-en.png" alt="Le jardin de l’appli : chaque sourate est un arbre, autour d’une petite maison." data-alt-en="The app’s garden: every surah is a tree, around a little house." width="631" height="1300" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Citations -->
+  <section class="quotes" aria-label="Avis / Reviews">
+    <div class="wrap">
+      <figure class="quote"><p>« J’ai supprimé 3 voire 4 applications tant celle-ci est complète ! »</p><span>Paulineg_a · App Store</span></figure>
+      <figure class="quote"><p>« Tant sur le fond que sur la forme, tout est pensé pour nous accompagner. »</p><span>Imrhanna · App Store</span></figure>
+      <figure class="quote"><p>« C’est vraiment l’application que je cherchais depuis des mois. »</p><span>Fatou1256 · App Store</span></figure>
+    </div>
+  </section>
+
+  <!-- 3. Ta journée -->
+  <section class="today">
+    <div class="wrap">
+      <div class="copy">
+        <span class="eyebrow" lang="fr">Chaque jour</span><span class="eyebrow" lang="en">Every day</span>
+        <h2 lang="fr">Tu ouvres l’appli, ta révision est déjà là</h2>
+        <h2 lang="en">Open the app, and your revision is already there</h2>
+        <ol class="steps" lang="fr">
+          <li><b>1</b><div><strong>Ta sourate en cours</strong><span>Tes versets à cocher, dix par dix, avec le prochain verset à apprendre.</span></div></li>
+          <li><b>2</b><div><strong>Tes révisions du jour</strong><span>Les sourates de ton jour de boucle. Un geste pour cocher.</span></div></li>
+          <li><b>3</b><div><strong>Un jour raté ?</strong><span>Décale la boucle ou reporte au lendemain. Aucun message négatif.</span></div></li>
+        </ol>
+        <ol class="steps" lang="en">
+          <li><b>1</b><div><strong>The surah you’re learning</strong><span>Your verses to tick off, ten at a time, with the next verse to learn.</span></div></li>
+          <li><b>2</b><div><strong>Today’s revisions</strong><span>The surahs of your loop day. One tap to mark them done.</span></div></li>
+          <li><b>3</b><div><strong>Missed a day?</strong><span>Shift the loop or move it to tomorrow. No guilt messages.</span></div></li>
+        </ol>
+      </div>
+      <div class="shot">
+        <img class="i18n" src="images/aujourdhui-fr.jpg" data-en="images/aujourdhui-en.jpg" alt="La carte de la sourate Al-Mulk : 18 versets sur 30 mémorisés, verset suivant : 19." data-alt-en="The Al-Mulk card: 18 of 30 verses memorized, next verse: 19." width="806" height="995">
+        <span class="tag t1" lang="fr">Jour 3 sur 7</span><span class="tag t1" lang="en">Day 3 of 7</span>
+        <span class="tag t2" lang="fr">✓ Versets 1 à 10 appris</span><span class="tag t2" lang="en">✓ Verses 1–10 learned</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Le jardin -->
+  <section class="garden" id="jardin">
+    <div class="wrap">
+      <span class="eyebrow" lang="fr">Ton jardin</span><span class="eyebrow" lang="en">Your garden</span>
+      <h2 lang="fr">Une sourate t’échappe ? Son arbre se dessèche.</h2>
+      <h2 lang="en">A surah slipping away? Its tree dries up.</h2>
+      <p class="lead" lang="fr">Fais glisser pour voir la différence. Une révision, et l’arbre reprend vie.</p>
+      <p class="lead" lang="en">Slide to see the difference. One revision, and the tree comes back to life.</p>
+      <div class="compare" id="compare">
+        <img src="images/jardin-vert.jpg" alt="Le jardin quand tout est révisé : des arbres verts." width="814" height="667">
+        <img class="dry" src="images/jardin-sec.jpg" alt="Le même jardin avec des sourates oubliées : plusieurs arbres desséchés." width="814" height="667">
+        <span class="bar"></span><span class="knob" aria-hidden="true">‹ ›</span>
+        <span class="lbl l1" lang="fr">Révisé</span><span class="lbl l1" lang="en">Revised</span>
+        <span class="lbl l2" lang="fr">Oublié</span><span class="lbl l2" lang="en">Forgotten</span>
+        <input type="range" id="compare-range" min="0" max="100" value="50" aria-label="Comparer le jardin révisé et le jardin oublié">
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Grille -->
+  <section class="bento">
+    <div class="wrap">
+      <header>
+        <span class="eyebrow" lang="fr">Tout en un</span><span class="eyebrow" lang="en">All in one</span>
+        <h2 lang="fr">Mémoriser, réviser, lire, au même endroit</h2>
+        <h2 lang="en">Memorize, revise and read, in one place</h2>
+      </header>
+      <div class="cells">
+        <div class="cell c-list">
+          <h3 lang="fr">Quatre dossiers pour tes sourates</h3><h3 lang="en">Four folders for your surahs</h3>
+          <p lang="fr">En mémorisation, Jadid, Qadim, À revoir. Quand tu coches le dernier verset, la sourate passe toute seule dans Jadid.</p>
+          <p lang="en">Memorizing, Jadid, Qadim, Needs work. Tick the last verse and the surah moves to Jadid on its own.</p>
+          <div class="pic">
+            <img class="i18n" src="images/sourates-fr.jpg" data-en="images/sourates-en.jpg" alt="La liste des sourates avec leurs dossiers." data-alt-en="The surah list with their folders." width="806" height="1480">
+          </div>
+        </div>
+        <div class="cell c-stats">
+          <h3 lang="fr">Tes progrès d’un coup d’œil</h3><h3 lang="en">Your progress at a glance</h3>
+          <p lang="fr">Par sourate, par juz, par dossier.</p><p lang="en">By surah, by juz, by folder.</p>
+          <div class="pic">
+            <img class="i18n" src="images/stats-dossiers-fr.jpg" data-en="images/stats-dossiers-en.jpg" alt="Les compteurs : 1 en mémorisation, 2 Jadid, 34 Qadim, 3 à revoir." data-alt-en="Counters: 1 memorizing, 2 Jadid, 34 Qadim, 3 needs work." width="755" height="360">
+          </div>
+        </div>
+        <div class="cell c-end">
+          <h3 lang="fr">Ta date de fin, selon ton rythme</h3><h3 lang="en">Your finish date, at your pace</h3>
+          <div class="pic">
+            <img class="i18n" src="images/stats-fin-fr.jpg" data-en="images/stats-fin-en.jpg" alt="Fin du Coran : vers juin 2031, à raison de 5 lignes par jour." data-alt-en="Finishing the Quran: around June 2031, at 5 lines a day." width="755" height="510">
+          </div>
+        </div>
+        <div class="cell c-mushaf">
+          <span class="ar" lang="ar">حفص · ورش · قالون</span>
+          <h3 lang="fr">Ton mushaf, ta lecture</h3><h3 lang="en">Your mushaf, your reading</h3>
+          <p lang="fr">Hafs (Médine ou indo-pakistanais), Warsh et Qalun. Avec la traduction, tes notes et tes surlignages.</p>
+          <p lang="en">Hafs (Madinah or Indo-Pak), Warsh and Qalun. With the translation, your notes and your highlights.</p>
+        </div>
+        <div class="cell c-night">
+          <h3 lang="fr">De jour comme de nuit</h3><h3 lang="en">By day and by night</h3>
+          <p lang="fr">Le jardin suit le mode sombre de ton téléphone.</p><p lang="en">The garden follows your phone’s dark mode.</p>
+          <div class="pic"><img src="images/jardin-nuit.jpg" alt="Le jardin la nuit, la petite maison éclairée." width="814" height="667"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Avis -->
+  <section class="reviews" id="avis">
+    <div class="wrap">
+      <header>
+        <div>
+          <span class="eyebrow" lang="fr">Avis</span><span class="eyebrow" lang="en">Reviews</span>
+          <h2 lang="fr">Ce qu’en disent celles et ceux qui mémorisent</h2>
+          <h2 lang="en">What people memorizing with it say</h2>
+          <p class="note-lang" lang="en">Reviews are shown in their original French.</p>
+        </div>
+        <div class="score">
+          <span class="big" lang="fr">5,0</span><span class="big" lang="en">5.0</span>
+          <div><span class="stars" aria-hidden="true">★★★★★</span>
+          <span class="meta" lang="fr">60 notes · App Store</span><span class="meta" lang="en">60 ratings · App Store</span></div>
+        </div>
+      </header>
+
+      <div class="wall-box" id="wall-box">
+        <div class="wall">
+          <article class="review hl"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Révolutionnaire</h3><p>Cette application a totalement changé mon organisation avec le Coran. J’ai utilisé beaucoup d’applications pour m’organiser dans ce domaine mais je n’avais jamais réellement trouvé chaussure à mon pied. Grâce à elle, je sais ce que je dois réviser, je peux suivre en temps réel mon apprentissage et ma lecture. Ce que j’aime beaucoup, c’est son graphisme. Il est tellement doux… Un véritable couteau suisse.</p><span class="who">MB.712</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Une application qui regroupe TOUT</h3><p>J’ai supprimé 3 voire 4 applications tant celle-ci est complète ! Elle est d’ailleurs très jolie et agréable à utiliser ! Sans pub, gratuite… que dire de plus ?</p><span class="who">Paulineg_a</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Débutante en hifdh et déjà comblée</h3><p>J’ai démarré le hifdh en septembre, découvert l’appli à sa sortie, et je suis ravie de pouvoir démarrer avec : n’ayant pas de repères, l’appli me cadre simplement et efficacement. Pas besoin de se poser trop de questions, quelques paramètres à remplir et on démarre.</p><span class="who">Gwen1903</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Une application indispensable !</h3><p>Une application qui m’aide énormément à organiser ma mémorisation et surtout mes révisions du Coran. Tout est simple, clair et vraiment bien pensé. C’est exactement ce dont j’avais besoin pour garder une certaine régularité au quotidien !</p><span class="who">yoyo0703</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Top simple efficace</h3><p>Beaucoup d’applications sont compliquées à prendre en main et/ou on ne peut pas classer chaque sourate par jour, on nous impose la page, donc là c’est vrai super ! Et le petit côté arbre jardin personnalisable trop mignon 🌲🌳🌱</p><span class="who">SasaBady</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">Canada</span></div><h3>Barakallahou fik</h3><p>C’est vraiment l’application que je cherchais depuis des mois. Pouvoir suivre sa mémorisation, sa révision, les remarques et tester nos connaissances au même endroit.</p><span class="who">Fatou1256</span></article>
+          <article class="review hl"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Excellent !</h3><p>On peut mémoriser, réviser, et lire. L’application nous donne ce que l’on doit réviser chaque jour, on peut être interrogé au milieu des sourates. Je trouve que c’est vraiment bien fait, avec en plus la possibilité d’annoter et de traduire un mot.</p><span class="who">Hayat8418</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Hyper pratique, super agréable</h3><p>Quel beau travail, c’est beau, et surtout hyper pratique pour systématiser les révisions ; j’aime beaucoup utiliser les surlignages et encadrements en couleur pour marquer les mots ou versets à réviser avec attention 🤍</p><span class="who">mijayou177</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Incroyable !</h3><p>J’ai découvert cette application il n’y a pas longtemps mais je l’aime déjà beaucoup. Tant sur le fond que sur la forme, tout est pensé pour nous accompagner dans ce chemin.</p><span class="who">Imrhanna</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Génial</h3><p>L’application est encore nouvelle mais pour l’instant, c’est que du bon, j’ai pas eu de bugs et j’aime beaucoup le concept avec le jardin.</p><span class="who">Ashino69</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Incroyable !!!</h3><p>Franchement l’application est juste top, ça se voit que tu y as mis du temps et de l’énergie, elle est digne d’une application payante 💗</p><span class="who">alakim1957</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Excellente application</h3><p>Excellente application, très intuitive avec de nombreuses possibilités de réglages permettant de s’adapter à chacun.</p><span class="who">Delphineab</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Génialissime</h3><p>Je recommande cette app à 100 %, elle est complète et tellement agréable à utiliser. L’univers dans lequel on est invité est encourageant et beau à découvrir.</p><span class="who">Meriem120309</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Top !!!!</h3><p>Elle regroupe ce qu’il faut pour faire du Coran un véritable compagnon, quel que soit le niveau et l’objectif. Gratuite en plus. Merci ❤️</p><span class="who">Chichiteuse92</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Une très belle découverte</h3><p>Très simple d’utilisation, extrêmement utile. Je l’avais sur papier, mais l’application je trouve c’est tellement mieux.</p><span class="who">Uum Khandji</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">Belgique</span></div><h3>Une app incroyable 😍</h3><p>L’essayer c’est l’adopter ! L’app est facile d’utilisation et ludique.</p><span class="who">Des mots qui se livrent</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Trop bien machallah !</h3><p>Super user experience. Hyper facile et interactif.</p><span class="who">FI.Z03</span></article>
+          <article class="review"><div class="head"><span class="stars">★★★★★</span><span class="where">France</span></div><h3>Appli d’utilité publique</h3><p>L’application est très bien construite, ça permet d’avoir une bonne discipline au quotidien.</p><span class="who">Sniskk</span></article>
+        </div>
+      </div>
+      <div class="more">
+        <button class="btn btn-ghost" type="button" id="wall-more"><span lang="fr">Voir plus d’avis</span><span lang="en">Show more reviews</span></button>
+        <a class="btn btn-ghost" href="https://apps.apple.com/app/id6828521150" target="_blank" rel="noopener"><span lang="fr">Tous les avis sur l’App Store</span><span lang="en">All reviews on the App Store</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Détails -->
+  <section class="details">
+    <div class="wrap">
+      <h2 lang="fr">Tout est pensé, jusqu’aux petits détails</h2>
+      <h2 lang="en">Everything is thought through, down to the details</h2>
+      <div class="list">
+        <div><h3 lang="fr">Ta boucle, ton rythme</h3><h3 lang="en">Your loop, your pace</h3><p lang="fr">Tu choisis le nombre de jours de la boucle et le jour de chaque sourate.</p><p lang="en">Choose how many days your loop lasts and the day of each surah.</p></div>
+        <div><h3 lang="fr">Sans connexion</h3><h3 lang="en">Works offline</h3><p lang="fr">Tout marche sans internet. Un compte facultatif garde ta progression sur iPhone et iPad.</p><p lang="en">Everything works without internet. An optional account syncs iPhone and iPad.</p></div>
+        <div><h3 lang="fr">Ta vie privée</h3><h3 lang="en">Your privacy</h3><p lang="fr">Pas de publicité, pas de revente de données, pas de suivi. Hébergé dans l’Union européenne.</p><p lang="en">No ads, no data selling, no tracking. Hosted in the European Union.</p></div>
+        <div><h3 lang="fr">Faite par une mémorisatrice</h3><h3 lang="en">Made by someone memorizing</h3><p lang="fr">Chaque écran vient de sa propre mémorisation du Coran, et des retours de celles et ceux qui l’utilisent.</p><p lang="en">Every screen comes from her own Quran memorization, and from the feedback of people using it.</p></div>
+        <div><h3 lang="fr">Un rappel discret</h3><h3 lang="en">A gentle reminder</h3><p lang="fr">Seulement si tu n’as encore rien révisé dans la journée.</p><p lang="en">Only if you haven’t revised anything yet today.</p></div>
+        <div><h3 lang="fr">Trois langues</h3><h3 lang="en">Three languages</h3><p lang="fr">En français, en anglais et en arabe.</p><p lang="en">In French, English and Arabic.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Fin -->
+  <section class="end">
+    <div class="wrap">
+      <div class="panel">
+        <div class="copy">
+          <h2 lang="fr">Ton jardin t’attend</h2><h2 lang="en">Your garden is waiting</h2>
+          <p lang="fr">Range en quelques touches les sourates que tu connais déjà, et ta première révision est prête.</p>
+          <p lang="en">Add the surahs you already know in a few taps, and your first revision is ready.</p>
+          <div class="ctas">
+            <a class="btn btn-ink" href="https://apps.apple.com/app/id6828521150" target="_blank" rel="noopener"><span lang="fr">Télécharger sur l’App Store</span><span lang="en">Download on the App Store</span></a>
+            <a class="btn btn-ghost" href="https://mamemorisation.beehiiv.com" target="_blank" rel="noopener"><span lang="fr">Android : préviens-moi de la sortie</span><span lang="en">Android: tell me when it’s out</span></a>
+          </div>
+        </div>
+        <img class="house" src="images/maison.jpg" alt="" width="402" height="560">
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ma mémorisation</span>
+    <nav>
+      <a href="assistance.html"><span lang="fr">Assistance</span><span lang="en">Support</span></a>
+      <a href="confidentialite.html" lang="fr">Confidentialité</a>
+      <a href="privacy.html" lang="en">Privacy</a>
+      <a href="https://www.instagram.com/mamemorisation/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://mamemorisation.beehiiv.com" target="_blank" rel="noopener">Newsletter</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function setLang(l) {
+    root.lang = l;
+    document.getElementById('lang-fr').setAttribute('aria-pressed', l === 'fr');
+    document.getElementById('lang-en').setAttribute('aria-pressed', l === 'en');
+    try { localStorage.setItem('lang', l); } catch (e) {}
+    // Une seule image par place : on change son adresse selon la langue (la page ne charge pas les deux versions)
+    document.querySelectorAll('img.i18n').forEach(function (img) {
+      if (!img.dataset.fr) { img.dataset.fr = img.getAttribute('src'); img.dataset.altFr = img.alt; }
+      img.src = l === 'en' ? img.dataset.en : img.dataset.fr;
+      img.alt = l === 'en' ? img.dataset.altEn : img.dataset.altFr;
+    });
+  }
+  // Sur le vrai site, chaque langue a sa propre adresse (/ et /en/) : le bouton change de page.
+  // Dans la maquette, le bouton change la langue sur place.
+  var other = root.getAttribute('data-other');
+  if (other) {
+    setLang(root.lang);
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.dataset.set === root.lang) return;
+        try { localStorage.setItem('lang', b.dataset.set); } catch (e) {}
+        location.href = other;
+      });
+    });
+  } else {
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    var nav = (navigator.language || 'fr').slice(0, 2);
+    setLang(saved === 'fr' || saved === 'en' ? saved : nav === 'en' ? 'en' : 'fr');
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.dataset.set); });
+    });
+  }
+
+  // Comparaison du jardin
+  var compare = document.getElementById('compare');
+  var range = document.getElementById('compare-range');
+  range.addEventListener('input', function () { compare.style.setProperty('--pos', range.value + '%'); });
+
+  // Mur d'avis : voir plus
+  var box = document.getElementById('wall-box');
+  var more = document.getElementById('wall-more');
+  more.addEventListener('click', function () { box.classList.add('open'); more.hidden = true; });
+})();
+</script>
+
+</body>
+</html>
